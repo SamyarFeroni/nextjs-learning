@@ -7,7 +7,7 @@ export default async function TodoDetail({ params }) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
   
   if (!res.ok) {
-    throw new Error('Failed to fetch data');
+    throw new Error('This ID is not Founded (try 200>ID)');
   }
 
   const todo = await res.json();

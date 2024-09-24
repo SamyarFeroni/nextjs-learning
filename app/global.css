@@ -1,0 +1,14 @@
+/* app/globals.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black; /* پس‌زمینه مشکی */
+    color: white; /* رنگ متن سفید */
+    font-family: Arial, sans-serif; /* نوع فونت */
+}
+
+h1, h2, h3, p {
+    margin: 10px; /* فاصله برای عناصر */
+}
