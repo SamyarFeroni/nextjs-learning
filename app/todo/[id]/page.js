@@ -1,36 +1,21 @@
-// app/component/[id]/page.js
-"use client"; // اضافه کردن این خط
+// app/todo/[id]/page.js
 
-import { useEffect, useState } from "react";
-
-export default function TodoDetail({ params }) {
+export default async function TodoDetail({ params }) {
   const { id } = params; // دریافت id از params
-  const [todo, setTodo] = useState(null);
 
-  useEffect(() => {
-    const fetchTodo = async () => {
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${id}`
-      );
-      if (res.ok) {
-        const data = await res.json();
-        setTodo(data);
-      } else {
-        // Handle error if necessary
-        setTodo(null);
-      }
-    };
-
-    fetchTodo();
-  }, [id]);
-
-  if (!todo) {
-    return <div>Loading...</div>; // یا نمایش پیام خطا
+  // بارگذاری داده‌ها با استفاده از SSR
+  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
+  
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
   }
+
+  const todo = await res.json();
 
   return (
     <div>
-      <pre>{JSON.stringify(todo, null, 2)}</pre>
+      <h2>Todo Details</h2>
+      <pre>{JSON.stringify(todo, null, 2)}</pre> {/* نمایش تمام بخش های شی */}
     </div>
   );
 }
