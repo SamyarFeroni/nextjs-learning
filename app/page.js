@@ -1,5 +1,5 @@
 // app/page.js
-"use client"; // مشخص کردن این فایل به عنوان Client Component
+"use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -7,6 +7,7 @@ export default function Home() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
+    //fetchDate from this link
     const fetchData = async () => {
       const res = await fetch("https://jsonplaceholder.typicode.com/todos");
       const data = await res.json();
@@ -21,15 +22,8 @@ export default function Home() {
     <>
       <h1>Todo List</h1>
       <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            <Link href={`/component/${todo.id}`}>
-              {" "}
-              {/* مسیر درست را مشخص کنید */}
-              {todos}
-            </Link>
-          </li>
-        ))}
+        {todos.map((todo) => (<li key={todo.id}>
+            <Link href={`/todo/${todo.id}`}>{todos}</Link></li>))}
       </ul>
     </>
   );

@@ -1,6 +1,4 @@
-// app/layout.js
-
-import './global.css'; // بارگذاری فایل CSS
+import './global.css';
 
 export default function RootLayout({ children }) {
   return (
