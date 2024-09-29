@@ -22,8 +22,12 @@ export default function Home() {
     <>
       <h1>Todo List</h1>
       <ul>
-        {todos.map((todo) => (<li key={todo.id}>
-            <Link href={`/todo/${todo.id}`}>{todos}</Link></li>))}
+        {todos.map((todo) => (
+          <li key={todo.id}>
+           <Link href={`/todo/${todo.id}`}>{todo.title}</Link>
+
+          </li>
+        ))}
       </ul>
     </>
   );
